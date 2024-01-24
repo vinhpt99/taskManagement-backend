@@ -21,7 +21,7 @@ class UserService {
          $user = Auth::user();
          if($user instanceof \App\Models\User) {
             $token = $user->createToken('api')->accessToken;
-            return response()->json(['token' => $token], 200);
+            return response()->json(['token' => $token, 'user' => $user], 200);
          }
       } else {
          return response()->json(['error' => 'Unauthenticated'], 400);
